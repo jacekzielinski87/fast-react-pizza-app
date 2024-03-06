@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData} from "react-router-dom";
 import {getOrder} from "../../services/apiRestaurant";
 
 import {
