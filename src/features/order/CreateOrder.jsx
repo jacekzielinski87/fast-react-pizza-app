@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Form, redirect, useNavigation, useActionData } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 
-
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
@@ -35,11 +34,10 @@ const fakeCart = [
 ];
 
 function CreateOrder() {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
   const formErrors = useActionData();
-
 
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
@@ -81,9 +79,9 @@ function CreateOrder() {
         </div>
 
         <div>
-          <input type="hidden" name = 'cart' value={JSON.stringify(cart)} />
+          <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <button disabled={isSubmitting}>
-          {isSubmitting ? "Placing Order..." : "Order now"}
+            {isSubmitting ? "Placing Order..." : "Order now"}
           </button>
         </div>
       </Form>
@@ -91,27 +89,26 @@ function CreateOrder() {
   );
 }
 
-
-export async function action({reqeust}) {
-  const formData = await reqeust.formData();
+export async function action({ request }) {
+  const formData = await request.formData();
   const data = Object.fromEntries(formData);
- 
 
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
-    priority:data.priority === "on",
-};
+    priority: data.priority === "on",
+  };
 
   const newOrder = await createOrder(order);
 
-  const errors = {}
-  if(!isValidPhone(order.phone)) errors.phone =
-   'Please give us your correct phone number. We might need it to contact to You.';
+  const errors = {};
+  if (!isValidPhone(order.phone))
+    errors.phone =
+      "Please give us your correct phone number. We might need it to contact to You.";
 
-  if(Object.keys(errors).length > 0) return errors; 
+  if (Object.keys(errors).length > 0) return errors;
 
-//If evertyhing is okey create new order and redirect
+  //If evertyhing is okey create new order and redirect
   return redirect(`/order/${newOrder.id}`);
 }
 
