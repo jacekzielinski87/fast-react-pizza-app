@@ -10,7 +10,6 @@ function Home() {
           Straight out of the oven, straight to you.
         </span>
       </h1>
-
       <CreateUser />
     </div>
   );
