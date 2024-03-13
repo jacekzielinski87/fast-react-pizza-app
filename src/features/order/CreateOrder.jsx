@@ -44,16 +44,16 @@ function CreateOrder() {
   const cart = fakeCart;
 
   return (
-    <div>
-      <h2>Ready to order? Lets go!</h2>
+    <div className="px-4 py-6">
+      <h2 className="mb-8 text-xl font-bold">Ready to order? Lets go!</h2>
 
       <Form method="POST">
-        <div>
-          <label>First Name</label>
-          <input type="text" name="customer" required />
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center">
+          <label className='sm:basis-40'>First Name</label>
+          <input className='input grow' type="text" name="customer" required />
         </div>
 
-        <div>
+        <div className='mb-5 flex gap-2 flex-col sm:flex-row sm:items-center'>
           <label>Phone number</label>
           <div>
             <input type="tel" name="phone" required />
@@ -61,14 +61,19 @@ function CreateOrder() {
           {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
 
-        <div>
+        <div className='mb-5 flex gap-2 flex-col sm:flex-row sm:items-center'>
           <label>Address</label>
           <div>
-            <input className="rounded-full border border-stone-200 
-              px-4 py-2 text-sm tranistion-all duration-300
-             placeholder:text-stone-500
-              focus:outline-none focus:ring
-             focus:ring-yellow-400 w-full md:px-6 md:py-3" type="text" name="address" required />
+            <input
+              className="tranistion-all w-full rounded-full 
+              border border-stone-200 px-4 py-2 text-sm
+             duration-300
+              placeholder:text-stone-500 focus:outline-none
+             focus:ring focus:ring-yellow-400 md:px-6 md:py-3"
+              type="text"
+              name="address"
+              required
+            />
           </div>
         </div>
 
@@ -88,8 +93,8 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-           
-          <Button disabled={isSubmitting}>
+
+          <Button disabled={isSubmitting} type="primary">
             {isSubmitting ? 'Placing Order...' : 'Order now'}
           </Button>
         </div>
