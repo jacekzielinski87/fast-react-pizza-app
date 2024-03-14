@@ -77,7 +77,7 @@ function CreateOrder() {
           </div>
         </div>
 
-        <div>
+        <div className='mb-12 flex gap-5 items-center'>
           <input
             className="h-6 w-6 accent-yellow-400
             focus:outline-none focus:ring
@@ -88,7 +88,7 @@ function CreateOrder() {
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority">Want to yo give your order priority?</label>
+          <label htmlFor="priority" className='font-medium'>Want to yo give your order priority?</label>
         </div>
 
         <div>
