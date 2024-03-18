@@ -6,7 +6,7 @@ import { formatCurrency } from '../../utilitis/helpers';
 function CartOverview() {
   const totalCartQuantity = useSelector(getTotalCartQuantity);
 
-  const totalCArtPrice = useSelector(getTotalCartPrice);
+  const totalCartPrice = useSelector(getTotalCartPrice);
 
   if(!totalCartQuantity) return null;
 
@@ -18,7 +18,7 @@ function CartOverview() {
     >
       <p className="space-x-4 font-semibold text-stone-300 sm:space-x-4">
         <span>{totalCartQuantity} pizzas</span>
-        <span>{formatCurrency(totalCArtPrice)}</span>
+        <span>{formatCurrency(totalCartPrice)}</span>
       </p>
       <Link to="/cart">Open cart &rarr;</Link>
     </div>
